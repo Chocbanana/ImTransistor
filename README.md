@@ -36,12 +36,12 @@ Program can:
 ### Goals
 
 **Basic Features to Aim for:**
--Given two images (centered, only 2 colors, jpg), 
--it will create simple movement of the lineart from one image to another, optimizing creation/deletion/movement of the lineart color (the color less present). 
--Then, given the length of time (in seconds) and fps, it will make a gif that loops for that length of time and fps.
+- Given two images (centered, only 2 colors, jpg)
+- it will create simple movement of the lineart from one image to another, optimizing creation/deletion/movement of the lineart color (the color less present).
+- Then, given the length of time (in seconds) and fps, it will make a gif that loops for that length of time and fps.
 
-**Second level:** 
--Can give any type of images (will convert to jpg/ 2 color internally)
--not centered
--different options for type of transition (less optimized, include bias for side/direction?)
--gui
+**Second level:**
+- Can give any type of images (will convert to jpg/ 2 color internally)
+- not centered
+- different options for type of transition (less optimized, include bias for side/direction?)
+- gui
