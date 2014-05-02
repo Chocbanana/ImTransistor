@@ -1,0 +1,32 @@
+Potential Algorithms
+====================
+
+## Algorithm Needs:
+- Must be able to move all pixels at same time
+- Treat lines as “objects”, grouping pixels
+- Optimize moving pixels vs. deleting vs. creating
+- Treat moving current pixels to optimum location as one action, then “fitting to final image” as another?
+-
+
+#### Image Deformation Using Least Squares
+- http://faculty.cs.tamu.edu/schaefer/research/mls.pdf
+- Pros:
+  * Complete, researched
+  * Uses rigid transformations, so surroundings-aware
+- Cons:
+  * Complicated
+  * Not directly applicable to project (at all really)
+
+
+#### Unity sprite AI least-path
+- Pros:
+  * Complete, easily implementable
+- Cons:
+  * Made for much less objects than number of pixels in image 
+
+#### Seam Carving
+- Used for finding least path for one pixel given static image
+- Applicable here??
+
+#### Flood fill
+- Use for determining lineart “objects”, or for changing/converting colors
