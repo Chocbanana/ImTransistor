@@ -6,7 +6,8 @@ Potential Algorithms
 - Treat lines as “objects”, grouping pixels
 - Optimize moving pixels vs. deleting vs. creating
 - Treat moving current pixels to optimum location as one action, then “fitting to final image” as another?
-- 
+- possible conversion to vector format
+- prioritize least-movement algorithm
 
 #### Image Deformation Using Least Squares
 - http://faculty.cs.tamu.edu/schaefer/research/mls.pdf
