@@ -14,7 +14,7 @@ n/a
 
 Program can:
 - Read in two same formatted, sized, monocolored images and:
-  * output them straight.
+  * ~~output them straight.~~
   * convert to animated gif (of 2 images).
 - Create transition:
   * of any type (most likely fade transition).
