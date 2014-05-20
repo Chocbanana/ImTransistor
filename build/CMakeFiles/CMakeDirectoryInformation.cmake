@@ -3,7 +3,7 @@
 
 # Relative path conversion top directories.
 SET(CMAKE_RELATIVE_PATH_TOP_SOURCE "/Users/Bhavana/Programming/Repositories/ImTransistor")
-SET(CMAKE_RELATIVE_PATH_TOP_BINARY "/Users/Bhavana/Programming/Repositories/ImTransistor")
+SET(CMAKE_RELATIVE_PATH_TOP_BINARY "/Users/Bhavana/Programming/Repositories/ImTransistor/build")
 
 # Force unix paths in dependencies.
 SET(CMAKE_FORCE_UNIX_PATHS 1)

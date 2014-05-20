@@ -45,7 +45,7 @@ CMAKE_EDIT_COMMAND = /usr/local/Cellar/cmake/2.8.12.2/bin/ccmake
 CMAKE_SOURCE_DIR = /Users/Bhavana/Programming/Repositories/ImTransistor
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/Bhavana/Programming/Repositories/ImTransistor
+CMAKE_BINARY_DIR = /Users/Bhavana/Programming/Repositories/ImTransistor/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,9 +72,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Bhavana/Programming/Repositories/ImTransistor/CMakeFiles /Users/Bhavana/Programming/Repositories/ImTransistor/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Bhavana/Programming/Repositories/ImTransistor/build/CMakeFiles /Users/Bhavana/Programming/Repositories/ImTransistor/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Bhavana/Programming/Repositories/ImTransistor/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Bhavana/Programming/Repositories/ImTransistor/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -102,41 +102,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named displayOriginal
+# Target rules for targets named ImTransistor
 
 # Build rule for target.
-displayOriginal: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 displayOriginal
-.PHONY : displayOriginal
+ImTransistor: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ImTransistor
+.PHONY : ImTransistor
 
 # fast build rule for target.
-displayOriginal/fast:
-	$(MAKE) -f CMakeFiles/displayOriginal.dir/build.make CMakeFiles/displayOriginal.dir/build
-.PHONY : displayOriginal/fast
+ImTransistor/fast:
+	$(MAKE) -f CMakeFiles/ImTransistor.dir/build.make CMakeFiles/ImTransistor.dir/build
+.PHONY : ImTransistor/fast
 
-displayOriginal.o: displayOriginal.cpp.o
-.PHONY : displayOriginal.o
+IT_main.o: IT_main.cpp.o
+.PHONY : IT_main.o
 
 # target to build an object file
-displayOriginal.cpp.o:
-	$(MAKE) -f CMakeFiles/displayOriginal.dir/build.make CMakeFiles/displayOriginal.dir/displayOriginal.cpp.o
-.PHONY : displayOriginal.cpp.o
+IT_main.cpp.o:
+	$(MAKE) -f CMakeFiles/ImTransistor.dir/build.make CMakeFiles/ImTransistor.dir/IT_main.cpp.o
+.PHONY : IT_main.cpp.o
 
-displayOriginal.i: displayOriginal.cpp.i
-.PHONY : displayOriginal.i
+IT_main.i: IT_main.cpp.i
+.PHONY : IT_main.i
 
 # target to preprocess a source file
-displayOriginal.cpp.i:
-	$(MAKE) -f CMakeFiles/displayOriginal.dir/build.make CMakeFiles/displayOriginal.dir/displayOriginal.cpp.i
-.PHONY : displayOriginal.cpp.i
+IT_main.cpp.i:
+	$(MAKE) -f CMakeFiles/ImTransistor.dir/build.make CMakeFiles/ImTransistor.dir/IT_main.cpp.i
+.PHONY : IT_main.cpp.i
 
-displayOriginal.s: displayOriginal.cpp.s
-.PHONY : displayOriginal.s
+IT_main.s: IT_main.cpp.s
+.PHONY : IT_main.s
 
 # target to generate assembly for a file
-displayOriginal.cpp.s:
-	$(MAKE) -f CMakeFiles/displayOriginal.dir/build.make CMakeFiles/displayOriginal.dir/displayOriginal.cpp.s
-.PHONY : displayOriginal.cpp.s
+IT_main.cpp.s:
+	$(MAKE) -f CMakeFiles/ImTransistor.dir/build.make CMakeFiles/ImTransistor.dir/IT_main.cpp.s
+.PHONY : IT_main.cpp.s
 
 # Help Target
 help:
@@ -144,12 +144,12 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... displayOriginal"
+	@echo "... ImTransistor"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... displayOriginal.o"
-	@echo "... displayOriginal.i"
-	@echo "... displayOriginal.s"
+	@echo "... IT_main.o"
+	@echo "... IT_main.i"
+	@echo "... IT_main.s"
 .PHONY : help
 
 

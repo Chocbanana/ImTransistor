@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/Bhavana/Programming/Repositories/ImTransistor/displayOriginal.cpp" "/Users/Bhavana/Programming/Repositories/ImTransistor/CMakeFiles/displayOriginal.dir/displayOriginal.cpp.o"
+  "/Users/Bhavana/Programming/Repositories/ImTransistor/IT_main.cpp" "/Users/Bhavana/Programming/Repositories/ImTransistor/build/CMakeFiles/ImTransistor.dir/IT_main.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "Clang")
 

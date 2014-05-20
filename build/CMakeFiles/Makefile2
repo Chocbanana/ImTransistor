@@ -53,41 +53,41 @@ CMAKE_EDIT_COMMAND = /usr/local/Cellar/cmake/2.8.12.2/bin/ccmake
 CMAKE_SOURCE_DIR = /Users/Bhavana/Programming/Repositories/ImTransistor
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/Bhavana/Programming/Repositories/ImTransistor
+CMAKE_BINARY_DIR = /Users/Bhavana/Programming/Repositories/ImTransistor/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/displayOriginal.dir
+# Target rules for target CMakeFiles/ImTransistor.dir
 
 # All Build rule for target.
-CMakeFiles/displayOriginal.dir/all:
-	$(MAKE) -f CMakeFiles/displayOriginal.dir/build.make CMakeFiles/displayOriginal.dir/depend
-	$(MAKE) -f CMakeFiles/displayOriginal.dir/build.make CMakeFiles/displayOriginal.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bhavana/Programming/Repositories/ImTransistor/CMakeFiles  1
-	@echo "Built target displayOriginal"
-.PHONY : CMakeFiles/displayOriginal.dir/all
+CMakeFiles/ImTransistor.dir/all:
+	$(MAKE) -f CMakeFiles/ImTransistor.dir/build.make CMakeFiles/ImTransistor.dir/depend
+	$(MAKE) -f CMakeFiles/ImTransistor.dir/build.make CMakeFiles/ImTransistor.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bhavana/Programming/Repositories/ImTransistor/build/CMakeFiles  1
+	@echo "Built target ImTransistor"
+.PHONY : CMakeFiles/ImTransistor.dir/all
 
 # Include target in all.
-all: CMakeFiles/displayOriginal.dir/all
+all: CMakeFiles/ImTransistor.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/displayOriginal.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Bhavana/Programming/Repositories/ImTransistor/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/displayOriginal.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Bhavana/Programming/Repositories/ImTransistor/CMakeFiles 0
-.PHONY : CMakeFiles/displayOriginal.dir/rule
+CMakeFiles/ImTransistor.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Bhavana/Programming/Repositories/ImTransistor/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ImTransistor.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Bhavana/Programming/Repositories/ImTransistor/build/CMakeFiles 0
+.PHONY : CMakeFiles/ImTransistor.dir/rule
 
 # Convenience name for target.
-displayOriginal: CMakeFiles/displayOriginal.dir/rule
-.PHONY : displayOriginal
+ImTransistor: CMakeFiles/ImTransistor.dir/rule
+.PHONY : ImTransistor
 
 # clean rule for target.
-CMakeFiles/displayOriginal.dir/clean:
-	$(MAKE) -f CMakeFiles/displayOriginal.dir/build.make CMakeFiles/displayOriginal.dir/clean
-.PHONY : CMakeFiles/displayOriginal.dir/clean
+CMakeFiles/ImTransistor.dir/clean:
+	$(MAKE) -f CMakeFiles/ImTransistor.dir/build.make CMakeFiles/ImTransistor.dir/clean
+.PHONY : CMakeFiles/ImTransistor.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/displayOriginal.dir/clean
+clean: CMakeFiles/ImTransistor.dir/clean
 .PHONY : clean
 
 #=============================================================================
