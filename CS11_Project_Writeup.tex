@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amsthm, amssymb,parskip,enumerate,graphicx, upgreek, dsfont, comment}
+\usepackage[left=2.5cm,top=2.5cm,right=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{amsmath, amssymb, graphics, setspace}
+
+\newcommand{\tab}{\hspace*{2em}}
+\newcommand{\ba}[1]{\begin{align*}#1\end{align*}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+
+\begin{document}
+\title{ImTransistor}
+\author{Bhavana Jonnalagadda \& Anusha Sinha}
+\date{CS 11 Project - Spring 2014}
+\maketitle
+
+\begin{enumerate}
+
+\item \textbf{Introduction} \\
+The purpose of this program is to create a smooth transition between two different images that looks natural. We define the ``natural'' look to mean that pixels are usually moved together in the groups they originated in, where possible. The program converts the two input images to black and white, and then it generates a number of frames (specified by the user) between the images and encodes them into a video with the QuickTime File Format (\code{.mov}). The video currently outputs at 30fps. So far this encoding only works on machines running the Mac OS. We used the OpenCV and Boost C++ libraries to complete this project. Throughout the program, we make use of the OpenCV \code{Mat} and \code{Point} objects.
+
+\item \textbf{The Main Loop}
+\begin{enumerate}[i.]
+\item \textbf{Input Data} \\
+We start by creating two \code{Mat} objects to store our initial and final images, \code{src1} and \code{src2}. We then call the \code{get\_images} function on these two \code{Mat} objects, and we also pass the function \code{argc} and \code{argv} (the command line arguments). \\
+\\
+The \code{get\_images} function first checks that the proper number of command line arguments were received (i.e., 3 arguments), and then stores the data for each image in \code{src1} and \code{src2} using the OpenCV \code{imread} function. The \code{get\_images} function then checks to make sure the images were successfully loaded (i.e., if either \code{src1} or \code{src2} is empty), and then checks if the images are the same size using the \code{size} members of the \code{Mat} image objects. Next, the OpenCV \code{threshold} function is used to make inverted binary images so that operations can be performed on the black pixels, since there are less black pixels than white pixels. This inversion is necessary because a black pixel has a value of 0 without  inverting, which would cause the transition to be performed on the white pixels. The \code{get\_images} function is of the type \code{void}, so it does not return anything. \\
+\\
+Finally, we input the number of frames desired by the user using the stardard \code{cout} and \code{cin} procedures. We check that the number of frames (\code{num}) is valid, before creating a \code{vector<Mat>} object called \code{frames} by passing the \code{move\_transition} function \code{src1}, \code{src2}, and \code{num}.
+
+\item \textbf{Creating the Frames} \\
+The frames are stored in a \code{vector<Mat>} object called \code{frames} that is created by passing the \code{move\_transition} function \code{src1}, \code{src2}, and \code{num}. The \code{move\_transition} function creates a \code{vector<Mat>} called \code{frames} which is of length num, along with three \code{Point} vectors, called \code{finalv}, \code{initv}, and\code{pixels} (which store indices to the initial and final images, along with an arbitrary intermediary). It also creates a \code{Mat} image called \code{same} that stores the pixels that will not change from the initial to final image. The function performs a bitwise \code{AND} on \code{src1} and \code{src2} and stores the result in \code{same}. It then uses the OpenCV function \code{findNonZero} to get the non-zero indices for \code{src1} and \code{src2} and stores them in \code{initv} and \code{finalv} (basically the number of black pixels that do need to move). It then splits down two branches depending on whether the initial image has more black pixels that move, or if the final image has more black pixels that move.
+\begin{enumerate}[(a)]
+\item If the initial image has more black pixels that do not stay the same, the program starts by making \code{pixels} the proper size (according to \code{finalv}). It then iterates through every element in finalv and finds the point in the initial image that has the least distance to a point in the final image. It then adds the point to the \code{pixels} vector and deletes it from \code{initv}. It then calculates the distances each pixel needs to travel by using the OpenCV \code{subtract} function on \code{finalv} and \code{pixels}, storing the result in \code{finalv}. It then creates a \code{Point} vector to use in the loop that will create the frames called \code{move}. Finally, it creates the frames using the values stored in \code{pixels} and using the OpenCV \code{scaleAdd} function to move each pixel gradually along the line from its initial and determined final positions. At each iteration of this \code{for} loop, it reduces the number of pixels that are left to be drawn by deleting pixels radially (we use a functor to sort the list of pixels to be deleted by distance to the center). At the end of each iteration, it adds in pixels that stay constant (the values stored in \code{same}).
+
+\item If the final image has more black pixels that do not stay the same, the program goes through the same general process described above, but it scales everything using the size of \code{initv} (i.e., the number of original black pixels that need to move).
+\end{enumerate}
+
+Finally, the original image is inserted in the beginning of the \code{frames} vector, the original inversion of the pixel values is reversed in each of the frames and the frames are converted to color. The function then outputs \code{frames}.
+
+\item \textbf{Creating a Directory to Store the Frames} \\
+The program then creates a directory to store the frames using the Boost \code{create\_directory} function and performs error checking to make sure the output folder was created. It then iterates through the \code{frames} and writes each frame to the newly created \code{Output} directory using the OpenCV \code{imwrite} function. If, for some reason, \code{frames} was not created correctly, it returns an error message.
+
+\item \textbf{Creating the Video (if Applicaple)} \\
+The final step is to create the output video. The program first asks the user whether an output video is desired (because this step of the process takes the longest). If desired by the user, the video is encoded using the OpenCV \code{VideoWriter} and \code{outputVideo} functions. The program first checks that the video writing process has been started properly (returning an erro message if it has not been started properly) before iterating through \code{frames} and writing the image in \code{frames} to the appropriate frame of the video. Finally, the program uses the \code{cout} function to print the location of the files and then returns 0 by convention.
+
+\end{enumerate}
+
+\item \textbf{Running the Program} \\
+This program requires three command line arguments: the program's name, the original image, and the final image. The image argument must be of the same size and can be mostly any format (except \code{.gif}). Before running the program, make sure there is no folder named ``Output'' in the same directory.
+
+\end{enumerate}
+
+\end{document}
