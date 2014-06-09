@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -11,6 +12,18 @@
 using namespace cv;
 using namespace std;
 using namespace boost::filesystem;
+
+// The functor for sorting
+struct sorter {
+    Point center;
+    sorter(Point cntr) : center(cntr) {};
+
+    bool operator() (Point pt1, Point pt2) { 
+      return (norm(pt1 - center) < norm(pt2 - center));
+    }
+};
+
+
 
 void get_images(int argc,  char** argv, Mat *src1, Mat *src2);
 vector<Mat> gradient_transition(Mat im1, Mat im2, int num);
@@ -122,8 +135,8 @@ void get_images(int argc,  char** argv, Mat *src1, Mat* src2) {
   // Use threshold to make (inverted) binary images, so that the operations
   // can be performed on the lesser amount of pixels (since black is 0, 
   // without inverting, the transistion would happen on the white pixels!).
-  threshold(*src1, *src1, 10, 255, THRESH_BINARY_INV);
-  threshold(*src2, *src2, 10, 255, THRESH_BINARY_INV);
+  threshold(*src1, *src1, 50, 255, THRESH_BINARY_INV);
+  threshold(*src2, *src2, 50, 255, THRESH_BINARY_INV);
 
 }
 
@@ -157,15 +170,21 @@ vector<Mat> move_transition(Mat im1, Mat im2, int num){
   // the initial and final images, along with arbitrary intermediary.
   vector<Mat> frames(num);
   vector<Point> finalv, initv, pixels;
-  // The mat image that has the pixels that will not change.
-  Mat same;
+  Mat same; // The pixels that will not change.
   double dist;
 
   bitwise_and(im1, im2, same); // Finds the pixels that are the same.
-
   // Get non-zero indices.
   findNonZero(im1 - same, initv);
   findNonZero(im2 - same, finalv);
+
+  // These lines sort the vectors in the order of pixels to operate on/delete.
+  // Get center of image for sorting the coordinate vectors.
+  const Point center(im2.size().width/2, im2.size().height/2);
+  sorter condition(center);
+  sort(initv.begin(), initv.end(), condition);
+  sort(finalv.begin(), finalv.end(), condition);
+
 
   // If initial image has more pixels. VERY CONVOLUTED! 
   // TODO: Simplify and make more clear of a process :P
@@ -277,6 +296,5 @@ vector<Mat> move_transition(Mat im1, Mat im2, int num){
 
   return frames;
 }
-
 
 
