@@ -19,7 +19,7 @@ struct sorter {
     sorter(Point cntr) : center(cntr) {};
 
     bool operator() (Point pt1, Point pt2) { 
-      return (norm(pt1 - center) < norm(pt2 - center));
+      return (norm(pt1 - center) > norm(pt2 - center));
     }
 };
 
