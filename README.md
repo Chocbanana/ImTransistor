@@ -13,6 +13,13 @@ ImTransistor creates a series of frames (and movie if option selected) between t
 
 Command line arguments are 2 images of the same size, and can be in .jpg, .bmp, or .png formats. The program will convert them to black and white, and ask for the number of frames to be created; currently, the movie outputs at 30fps. Make sure there is no folder named “Output” in the same directory!
 
+Note: program has not been tested on Windows.
+
+## Dependencies
+
+- Boost.Filesystem
+- OpenCV
+
 
 ### Future Work
 
